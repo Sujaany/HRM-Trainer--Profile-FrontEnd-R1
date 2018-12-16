@@ -1,0 +1,22 @@
+<!-- Nav tabs -->
+<br>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" routerLink="viewtakenemploan" *ngIf="info.authorities=='EMPLOYEE'">Already Taken List</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" routerLink="viewtakenhrloan"*ngIf="info.authorities=='HR'">User Loan Taken List</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" routerLink="viewloan"*ngIf="info.authorities=='EMPLOYEE'">Loan Taken List</a>
+  </li>
+  <!-- <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" routerLink="viewtakenloan">Taken Loan List</a>
+  </li> -->
+
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <router-outlet></router-outlet>
+</div>

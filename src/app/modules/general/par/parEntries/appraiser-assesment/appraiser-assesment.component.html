@@ -1,0 +1,96 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>par Id</th>
+      <th>Emp Id</th>
+      <th>Par Sheduled Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let par of parArray">
+      <td>{{par.id}}</td>
+      <td>{{par.empId}}</td>
+      <td>{{par.scheduleDate | date}}</td>
+      <td></td>
+      <td>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1" (click)="viewSchedulePar(par.id)">
+          score
+        </button>
+
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Par Contents</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <pre>
+          {{scoreAppraiserAssesment.value | json}}
+      </pre>
+      
+      <form [formGroup]="scoreAppraiserAssesment" (ngSubmit)="formData(scoreAppraiserAssesment)">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <label>Report Id:</label>
+              <input type="text" formControlName="reportId" name="reportId" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label>Appraised By:</label>
+              <input type="text" formControlName="appraisedById" name="appraisedById" class="form-control">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table">
+                <tr>
+                  <th>Content Name</th>
+                  <th>Score</th>
+                  <th>Comment</th>
+                </tr>
+                <tr formArrayName="scoreParAppraiserList" *ngFor="let parContent of scoreAppraiserAssesment.get('scoreParAppraiserList').controls;let i=index;">
+                  <ng-container [formGroupName]="i">
+
+
+                    <td><input type="text" formControlName="parContentName" name="parContentId" class="form-control"
+                        disabled /></td>
+                    <td>
+                      <select class="form-control" formControlName="score" class="form-control" name="score">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </td>
+                    <td><input type="text" class="form-control" formControlName="comment" name="comment"></td>
+                  </ng-container>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Apply</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
