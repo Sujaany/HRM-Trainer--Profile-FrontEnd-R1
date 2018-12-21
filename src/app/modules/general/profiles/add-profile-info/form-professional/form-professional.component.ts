@@ -5,6 +5,7 @@ import { Profile } from '../../view-profile-info/profile-table/profile.model';
 import { ProfileInfoService } from '../../view-profile-info/profile-table/profile-info.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-form-professional',
   templateUrl: './form-professional.component.html',
